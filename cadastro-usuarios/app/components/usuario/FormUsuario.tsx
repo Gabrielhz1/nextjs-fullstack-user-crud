@@ -3,8 +3,8 @@ import { Usuario } from "@/app/core/model/Usuario";
 import InputTexto from "../InputTexto";
 
 export interface FormUsuarioProps {
-    usuario:Usuario
-    onChange:(usuario:Usuario) => void
+    usuario: Partial<Usuario>
+    onChange:(usuario: Partial<Usuario>) => void
     Salvar:() => void
     Cancelar:() => void
 }

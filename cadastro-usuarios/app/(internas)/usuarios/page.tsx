@@ -5,22 +5,31 @@ import ListaUsuario from "@/app/components/usuario/ListaUsuario"
 import usuarios from "@/app/data/constants/usuarios"
 import { useState } from "react"
 import { Usuario } from "@/app/core/model/Usuario"
+import BackEnd from "@/backend"
 
 export default function Page() {
-    const [usuario, setusuario] = useState<Usuario>(usuarios[0])
-    function Salvar(){
-        //Salvar no banco de Dados
+    const [usuarios, setUsuarios] = useState<Usuario[]>([])
+    const [usuario, setUsuario] = useState< Partial <Usuario> | null>(usuarios[0])
+    function salvar(){
+        // if(!usuario) return
+        // BackEnd.usuarios.salvarUsuario(usuario)
     }
 
     return (
         <Pagina>
-            {/* <ListaUsuario/> */}
-            <FormUsuario 
-            usuario={usuario} 
-            onChange={setusuario}
-            Salvar={()=>{}}
-            Cancelar={()=>{}}
-            />
+            
+            {usuario ? (
+                    <FormUsuario 
+                usuario={usuario} 
+                onChange={setUsuario}
+                Salvar={salvar}
+                Cancelar={()=>setUsuario(null)}
+            />)
+            
+            :   (<ListaUsuario onClick={setUsuario}/>)
+                 
+            }
+            
         </Pagina>
         
     )
