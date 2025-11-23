@@ -1,9 +1,9 @@
 "use server"
 
-import RepositorioUsuario from "./RepositorioUsuario";
+import {buscarTodos} from "./RepositorioUsuario";
 
 export default async function  obterTodos() {
    
- return  RepositorioUsuario.obterTodos()
+ return buscarTodos()
 
 }

@@ -1,9 +1,9 @@
-import { Usuario } from "@/app/core/model/Usuario";
-import usuarios from "@/app/data/constants/usuarios";
+import  Usuario  from "@/app/core/model/Usuario";
+
 import LinhaUsuario from "./LinhaUsuario";
 
 export interface ListaUsuarioProps {
-    
+    usuarios:Usuario[],
     onClick?: (usuario:Usuario) => void 
 }
 
@@ -13,7 +13,7 @@ export default function ListaUsuario(props:ListaUsuarioProps){
         <div className="flex flex-col gap-4 ">
      
             {
-                usuarios.map((usuario:Usuario) => {
+                props.usuarios.map((usuario:Usuario) => {
                     return <LinhaUsuario key={usuario.id} usuario={usuario} onClick={props.onClick}/>   
 
                 }  )

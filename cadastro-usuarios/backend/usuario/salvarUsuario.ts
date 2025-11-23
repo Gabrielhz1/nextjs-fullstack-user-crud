@@ -1,14 +1,14 @@
-"use server"
+'use server'
 
-import { Usuario } from "../../app/core/model/Usuario";
+import  Usuario  from "../../app/core/model/Usuario";
 import Id from "../../app/core/utils/id";
-import RepositorioUsuario from "./RepositorioUsuario";
+import {salvar} from "./RepositorioUsuario";
 
 export default async function  salvarUsuario(usuario:Partial<Usuario>) {
     const novoUsuario = {
         ...usuario,
         id:usuario.id ?? Id.novo,
     }
-    RepositorioUsuario.salvar(novoUsuario as Usuario)
+    salvar(novoUsuario as Usuario)
 
 }
